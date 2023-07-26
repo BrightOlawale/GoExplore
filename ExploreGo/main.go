@@ -56,4 +56,15 @@ func main() {
 	fmt.Println("Before passing to func:", slice)
 	workSlice(slice)
 	fmt.Println("After passing to func:", slice)
+
+	// Using the custom type in main function
+	// Assigning values to the custom type
+	firstUser := User{
+		Id:   1,
+		Name: "Olawale",
+	}
+
+	// Printing the values
+	fmt.Println(firstUser.Id)
+	fmt.Println(firstUser.Name)
 }
