@@ -65,6 +65,6 @@ func main() {
 	}
 
 	// Printing the values
-	fmt.Println("Id: "firstUser.Id)
-	fmt.Println("Username: "firstUser.Name)
+	fmt.Println("Id: ", firstUser.Id)
+	fmt.Println("Username: ", firstUser.Name)
 }
