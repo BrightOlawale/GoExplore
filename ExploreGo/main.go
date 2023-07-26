@@ -67,4 +67,11 @@ func main() {
 	// Printing the values
 	fmt.Println("Id: ", firstUser.Id)
 	fmt.Println("Username: ", firstUser.Name)
+
+	// Using the calculateArea function
+	// Assign values
+	rectangle := Rectangle{width: 5, height: 5}
+
+	// Print the calculated area
+	fmt.Println("Area of the rectangle: ", rectangle.calculateArea())
 }
