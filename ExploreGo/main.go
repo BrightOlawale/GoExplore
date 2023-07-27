@@ -57,21 +57,9 @@ func main() {
 	workSlice(slice)
 	fmt.Println("After passing to func:", slice)
 
-	// Using the custom type in main function
-	// Assigning values to the custom type
-	firstUser := User{
-		Id:   1,
-		Name: "Olawale",
-	}
+	// Function to test the custom type
+	customTypeTest()
 
-	// Printing the values
-	fmt.Println("Id: ", firstUser.Id)
-	fmt.Println("Username: ", firstUser.Name)
-
-	// Using the calculateArea function
-	// Assign values
-	rectangle := Rectangle{width: 5, height: 5}
-
-	// Print the calculated area
-	fmt.Println("Area of the rectangle: ", rectangle.calculateArea())
+	// Function to test the hashPassword method
+	hashTest()
 }
