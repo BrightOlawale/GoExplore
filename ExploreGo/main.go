@@ -30,16 +30,8 @@ func pointers() {
 	fmt.Println("Value of a using pointer:", *ptr)
 }
 
-// Function to a slice as an argument
-func workSlice(slice []int) {
-	// Changing the value of the first element
-	slice[0] = 25
-}
-
-// Main function
-func main() {
-	pointers()
-
+// Function to test more pointers
+func morePointers() {
 	// Creating a variable
 	num := 30
 
@@ -48,7 +40,16 @@ func main() {
 
 	// Print the value of num
 	fmt.Println("Doubled of num:", num)
+}
 
+// Function to a slice as an argument
+func workSlice(slice []int) {
+	// Changing the value of the first element
+	slice[0] = 25
+}
+
+// Function to test slices
+func sliceTest() {
 	// Create a slice of integers
 	slice := []int{40, 50, 60, 70, 80}
 
@@ -56,10 +57,22 @@ func main() {
 	fmt.Println("Before passing to func:", slice)
 	workSlice(slice)
 	fmt.Println("After passing to func:", slice)
+}
 
-	// Function to test the custom type
+// Main function
+func main() {
+	// Testing pointers
+	pointers()
+
+	// Testing more pointers
+	morePointers()
+
+	// Testing slices
+	sliceTest()
+
+	// Testing custom type
 	customTypeTest()
 
-	// Function to test the hashPassword method
+	// Testing hashPassword method
 	hashTest()
 }
