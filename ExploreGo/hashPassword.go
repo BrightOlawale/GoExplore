@@ -12,6 +12,11 @@ type NewUser struct {
 
 // HashPassword Method to hash password of user
 func (user *NewUser) HashPassword() error {
+	// Notice in the above we used a pointer receiver which we did not use in the calculateArea method
+	// This is because we want to modify the value of the password field of the user struct
+	// If we do not use a pointer receiver, the value of the password field will not be modified
+	// So use a pointer receiver when you want to modify the value of a field in a struct
+
 	// Hash password using bcrypt algorithm
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
 	// Note that the second argument is the cost of hashing the password, which is set to 10 by default as used above
