@@ -75,4 +75,13 @@ func main() {
 
 	// Testing hashPassword method
 	hashTest()
+
+	// Testing interface
+	testInterfaces()
+
+	// Testing more interfaces
+	testMoreInterfaces()
+
+	// Testing Error handling
+	testError()
 }
