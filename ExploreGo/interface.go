@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 // Shape Create shape interface to store function for different shapes
 type Shape interface {
 	calcArea() float64
@@ -37,4 +39,21 @@ func (rec Rect) calcArea() float64 {
 // calcArea for Squares
 func (sqr Square) calcArea() float64 {
 	return sqr.sides * sqr.sides
+}
+
+// Now, let's test the function calcArea for all the shapes
+func testInterfaces() {
+	// Create a circle
+	cir := Circle{radius: 10}
+
+	// Create a rectangle
+	rec := Rect{width: 10, height: 10}
+
+	// Create a square
+	sqr := Square{sides: 10}
+
+	// Call the calcArea function for each shape
+	fmt.Println("Circle Area: ", cir.calcArea())
+	fmt.Println("Rectangle Area: ", rec.calcArea())
+	fmt.Println("Square Area: ", sqr.calcArea())
 }
