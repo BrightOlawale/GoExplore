@@ -65,6 +65,26 @@ func readFile(filePath string) ([]byte, error) {
 	return data[:count], nil
 }
 
+// Panic and Recover mechanism in Go
+// Panic is used to handle unexpected errors and stop the program
+// Recover is used to recover from a panic allowing the program to continue
+func panicAndRecover() {
+	// Defer a function that will recover from a panic
+	defer func() {
+		if err := recover();
+		// If error occurred, print the error
+			err != nil {
+			fmt.Println("Panic occurred:", err)
+		}
+	}()
+
+	// Panic here to trigger the above function
+	panic("Something unexpected occurred")
+
+	// This line will not be executed
+	fmt.Println("Program finished successfully")
+}
+
 // Testing error handling
 func testError() {
 	// Test the division function
@@ -96,4 +116,7 @@ func testError() {
 	} else {
 		fmt.Println("Data: ", data)
 	}
+
+	// Testing panic and recover
+	panicAndRecover()
 }
