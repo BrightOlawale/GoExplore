@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -57,6 +58,27 @@ func main() {
 	// Check if an error occurred while starting the server
 	if err := server.ListenAndServe(); err != nil {
 		// panic if we failed to connect
+		log.Panic(err)
+	}
+}
+
+// getAllBooks: return all books data from the server
+func getAllBooks(w http.ResponseWriter, r *http.Request) {
+	// Convert the book data to JSON format
+	response, err := json.Marshal(allBooks)
+
+	// If error occurred
+	if err != nil {
+		log.Panic(err)
+	}
+
+	// Now let us set the response header
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK) // StatusOk is 200
+
+	// Now let us set the response body
+	_, err = w.Write(response)
+	if err != nil {
 		log.Panic(err)
 	}
 
