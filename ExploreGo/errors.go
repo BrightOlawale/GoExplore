@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/pkg/errors"
+	"os"
 )
 
 // Learning error handling
@@ -39,6 +40,30 @@ func processError() error {
 }
 
 // Handling Errors with multiple return values
+func readFile(filePath string) ([]byte, error) {
+	// Open the file
+	file, err := os.Open(filePath)
+
+	// If error occurred, return nil and the error
+	if err != nil {
+		return nil, err
+	}
+
+	// Defer closing the file after the function returns
+	defer file.Close()
+
+	// Read the file
+	data := make([]byte, 1024)
+	count, err := file.Read(data)
+
+	// If error occurred, return nil and the error
+	if err != nil {
+		return nil, err
+	}
+
+	// Return the data and nil
+	return data[:count], nil
+}
 
 // Testing error handling
 func testError() {
@@ -53,7 +78,7 @@ func testError() {
 	// Testing custom error
 	errr := processError()
 
-	if err != nil {
+	if errr != nil {
 		fmt.Println("ERROR: ", errr)
 	}
 
@@ -62,5 +87,13 @@ func testError() {
 
 	if processErr != nil {
 		fmt.Println("ERROR:", processErr)
+	}
+
+	// Testing error handling with multiple return values
+	data, err := readFile("test.txt")
+	if err != nil {
+		fmt.Println("ERROR: ", err)
+	} else {
+		fmt.Println("Data: ", data)
 	}
 }
