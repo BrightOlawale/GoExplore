@@ -55,11 +55,20 @@ func main() {
 	// Now, let's start the server
 	fmt.Println("Starting server...")
 
-	// Check if an error occurred while starting the server
-	if err := server.ListenAndServe(); err != nil {
-		// panic if we failed to connect
-		log.Panic(err)
-	}
+	// Start the server in a separate Goroutine to avoid blocking the main Goroutine
+	go func() {
+		// Check if an error occurred while starting the server
+		if err := server.ListenAndServe(); err != nil {
+			// panic if we failed to connect
+			log.Panic(err)
+		}
+	}()
+
+	// Print a message to the console to show that the server is running
+	fmt.Println("Server started successfully")
+
+	// Keep the main Goroutine running to allow the server to keep running in the background
+	select {}
 }
 
 // getAllBooks: return all books data from the server
